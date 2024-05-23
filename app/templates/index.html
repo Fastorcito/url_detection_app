@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="text-center mb-4">Predicción de URL</h1>
+            <form method="post">
+                <div class="form-group">
+                    <label for="url">URL:</label>
+                    <input type="text" class="form-control" id="url" name="url" required>
+                </div>
+                <div class="form-group">
+                    <label for="model">Selecciona un modelo:</label>
+                    <select class="form-control" id="model" name="model">
+                        <option value="model_1">Modelo KNN</option>
+                        <option value="model_2">Model RNN</option>
+                        <option value="model_3">Model SVM</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+            </form>
+
+            {% if porcentaje_posibilidad is defined %}
+            <div class="alert alert-success mt-4" role="alert">
+                El porcentaje de posibilidad de que la URL sea segura es: {{ porcentaje_posibilidad }}%
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
